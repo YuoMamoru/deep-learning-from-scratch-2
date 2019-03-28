@@ -34,6 +34,7 @@ class Trainer:
                 batch_t = t[iters*batch_size:(iters+1)*batch_size]
 
                 loss = model.forward(batch_x, batch_t)
+                # print(loss)
                 model.backward()
                 params, grads = remove_duplicate(model.params, model.grads)
                 if max_grad is not None:
@@ -47,8 +48,8 @@ class Trainer:
                     elapsed_time = time.time() - start_time
                     print(f'| epoch {self.current_epoch + 1} '
                           f'|  iter {iters + 1} / {max_iters} '
-                          f'| time {elapsed_time}[s] '
-                          f'| loss {avg_loss:.2f}')
+                          f'| time {elapsed_time:.3f}[s] '
+                          f'| loss {avg_loss:.3f}')
                     self.loss_list.append(float(avg_loss))
                     total_loss, loss_count = 0, 0
 
@@ -119,8 +120,8 @@ class RnnlmTrainer:
                     elapsed_time = time.time() - start_time
                     print(f'| epoch {self.current_epoch + 1} '
                           f'|  iter {iters + 1} / {max_iters} '
-                          f'| time {elapsed_time}[s] '
-                          f'| perplexity {ppl:.2f}')
+                          f'| time {elapsed_time:.3f}[s] '
+                          f'| perplexity {ppl:.3f}')
                     self.ppl_list.append(float(ppl))
                     total_loss, loss_count = 0, 0
 
