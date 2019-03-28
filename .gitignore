@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# numpy / pickle files
+*.npy
+*.pkl
+
+# downloaded text files
+dataset/*.txt
+
 # C extensions
 *.so
 
